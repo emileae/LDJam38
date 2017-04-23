@@ -22,8 +22,8 @@ GameObject:
   - 33: {fileID: 33000013114931904}
   - 23: {fileID: 23000010145045792}
   - 114: {fileID: 114000014119672940}
-  - 58: {fileID: 58000010047591678}
   - 50: {fileID: 50000012785695482}
+  - 58: {fileID: 58000012788202424}
   m_Layer: 0
   m_Name: Flare
   m_TagString: Flare
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011022874296}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -5.25, y: 0, z: 0}
+  m_LocalPosition: {x: -6.195, y: -0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_Children: []
@@ -51,13 +51,13 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011022874296}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 0
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2a4faab3e2af844ef923fc85da090681, type: 2}
+  - {fileID: 2100000, guid: 03f56ffbd1dfc485083339207351882d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -79,7 +79,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011022874296}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!50 &50000012785695482
 Rigidbody2D:
   serializedVersion: 2
@@ -97,7 +97,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58000010047591678
+--- !u!58 &58000012788202424
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -110,7 +110,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.2
 --- !u!114 &114000014119672940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,4 +125,3 @@ MonoBehaviour:
   speed: 30
   velocity: {x: 0, y: 0, z: 0}
   timeToDie: 5
-  particles: {fileID: 0}

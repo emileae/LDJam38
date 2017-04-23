@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor.VersionControl;
+//using UnityEditor.VersionControl;
+using System.Collections.Generic;
 
 public class Planet : MonoBehaviour {
 
@@ -12,6 +13,9 @@ public class Planet : MonoBehaviour {
 
 	private bool dead = false;
 
+	// Crashing into the sun
+	public LayerMask sunLayer;
+
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +26,12 @@ public class Planet : MonoBehaviour {
 	void Update ()
 	{
 		if (dead && !particleExplosion.IsAlive ()) {
-			Destroy(transform.parent.gameObject);
+			Destroy (transform.parent.gameObject);
+		}
+
+		Collider2D overlapSun = Physics2D.OverlapCircle (transform.position, 0.1f, sunLayer);
+		if (overlapSun != null && !dead) {
+			DestroyPlanet();
 		}
 	}
 
@@ -34,7 +43,7 @@ public class Planet : MonoBehaviour {
 
 			// pushes orbits away
 			if (col.CompareTag ("Flare")) {
-				Debug.Log ("HIT!!!! change orbit.... " + orbitScript.positionIndex);
+//				Debug.Log ("HIT!!!! change orbit.... " + orbitScript.positionIndex);
 			
 				if (orbitScript.positionIndex > 125 && orbitScript.positionIndex < 375) {
 //				Debug.Log("Increase b");
@@ -84,6 +93,8 @@ public class Planet : MonoBehaviour {
 				}
 
 				particleExplosion.Play ();
+				orbitScript.DeactivateAllModels ();
+				orbitScript.habitableOrbits = 0;
 
 				float randomAdjustment = Random.Range (-2.0f, 2.0f);
 
@@ -100,26 +111,34 @@ public class Planet : MonoBehaviour {
 					orbitScript.a += randomAdjustment;
 				}
 
-//				orbitScript.habitableOrbits = 0;
-//				orbitScript.isHabitable = false;
-
-//				orbitScript.CreateEllipse (orbitScript.a, orbitScript.b, orbitScript.h, orbitScript.k, orbitScript.theta, orbitScript.resolution);
 				orbitScript.TweakOrbit ();
 
 			}
 
-			if (col.CompareTag ("Sun")) {
-//			Destroy(transform.parent.gameObject);
+		}
 
-				if (!messageScript.tutorial) {
-					messageScript.ShowMessageText ("A World is consumed");
-				}
+	}
 
-				particleExplosion.Play ();
-				dead = true;
+	public void DestroyPlanet ()
+	{
+		if (!messageScript.tutorial) {
+			messageScript.ShowMessageText ("A World is consumed");
+		}
 
-			}
+		int removeIndex = messageScript.planets.IndexOf (orbitScript);
+		messageScript.planets.RemoveAt (removeIndex);
+		messageScript.civillisations.RemoveAt (removeIndex);
+		messageScript.orbitLines.RemoveAt (removeIndex);
+		orbitScript.speed = 0.8f;// moves slowly
 
+		messageScript.CheckHabitable ();// updates the number of habitable planets
+
+		particleExplosion.Play ();
+		dead = true;
+
+		// the universe starts again
+		if (orbitScript.habitableOrbits >= 25) {
+			GameObject.Find ("BigBang").GetComponent<BigBang> ().Bang ();
 		}
 
 	}

@@ -1,0 +1,125 @@
+fileFormatVersion: 2
+guid: db59eb23df8d44612bf9d34335b5464f
+timeCreated: 1492945096
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: CraterBase
+    100002: PlanetBase
+    100004: //RootNode
+    100006: TerrainA
+    100008: TerrainB
+    100010: TerrainC
+    100012: TerrainD
+    100014: TerrainE
+    100016: TerrainF
+    100018: TerrainG
+    100020: TerrainH
+    400000: CraterBase
+    400002: PlanetBase
+    400004: //RootNode
+    400006: TerrainA
+    400008: TerrainB
+    400010: TerrainC
+    400012: TerrainD
+    400014: TerrainE
+    400016: TerrainF
+    400018: TerrainG
+    400020: TerrainH
+    2300000: CraterBase
+    2300002: PlanetBase
+    2300004: TerrainA
+    2300006: TerrainB
+    2300008: TerrainC
+    2300010: TerrainD
+    2300012: TerrainE
+    2300014: TerrainF
+    2300016: TerrainG
+    2300018: TerrainH
+    3300000: CraterBase
+    3300002: PlanetBase
+    3300004: TerrainA
+    3300006: TerrainB
+    3300008: TerrainC
+    3300010: TerrainD
+    3300012: TerrainE
+    3300014: TerrainF
+    3300016: TerrainG
+    3300018: TerrainH
+    4300000: TerrainB
+    4300002: TerrainC
+    4300004: TerrainD
+    4300006: TerrainE
+    4300008: CraterBase
+    4300010: TerrainF
+    4300012: TerrainG
+    4300014: TerrainH
+    4300016: TerrainA
+    4300018: PlanetBase
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

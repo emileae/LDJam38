@@ -8,8 +8,6 @@ public class SunFlare : MonoBehaviour {
 
 	public float timeToDie = 5.0f;
 
-	public ParticleSystem particles;
-
 	// Use this for initialization
 	void Start () {
 		Quaternion rotation = Quaternion.LookRotation(velocity);
@@ -24,13 +22,13 @@ public class SunFlare : MonoBehaviour {
 
 	void OnEnable()
     {
-        Debug.Log("PrintOnEnable: script was enabled");
+//        Debug.Log("PrintOnEnable: script was enabled");
         StartCoroutine(Die());
     }
 
     IEnumerator Die(){
     	yield return new WaitForSeconds(timeToDie);
-    	Debug.Log("Die.....");
+//    	Debug.Log("Die.....");
 //    	gameObject.SetActive(false);
 		Destroy(gameObject);
     }

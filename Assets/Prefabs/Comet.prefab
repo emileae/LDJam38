@@ -208,6 +208,11 @@ MonoBehaviour:
   theta: 0
   resolution: 1000
   habitableOrbits: 0
+  currentMilestone: 0
+  treesA: {fileID: 0}
+  treesB: {fileID: 0}
+  house: {fileID: 0}
+  rocket: {fileID: 0}
 --- !u!114 &114000014082226478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,8 +224,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2a89cfb3e004b018b5e439270476ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialMaterial: {fileID: 0}
+  dirtMaterial: {fileID: 0}
+  waterMaterial: {fileID: 0}
+  floraMaterial: {fileID: 0}
+  crazyMaterial: {fileID: 0}
   orbitScript: {fileID: 114000010515706780}
   particleExplosion: {fileID: 198000013968491406}
+  sunLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!120 &120000012740210368
 LineRenderer:
   m_ObjectHideFlags: 1

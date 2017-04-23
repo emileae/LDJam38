@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BigBang.cs" />
      <Compile Include="Assets\Scripts\DrawEllipse.cs" />
+     <Compile Include="Assets\Scripts\Instr.cs" />
      <Compile Include="Assets\Scripts\Planet.cs" />
      <Compile Include="Assets\Scripts\Sun.cs" />
      <Compile Include="Assets\Scripts\SunFlare.cs" />

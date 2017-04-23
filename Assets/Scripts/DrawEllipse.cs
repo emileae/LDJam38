@@ -41,23 +41,53 @@ using System.Collections.Generic;
  
 	private Vector3[] positions;
 
-	private List<Vector3[]> orbits = new List<Vector3[]>();
-
 	// Count the number of consecutive habitable orbits... maybe use it to measure how long life was sustained
+	private bool logged = false;
 	public int habitableOrbits = 0;
+	public int currentMilestone = 0;
+
+	// milestone models
+	public GameObject treesA;
+	public GameObject treesB;
+	public GameObject house;
+	public GameObject rocket;
+
+	// planet terrain material
+	public Material initialMaterial;
+	public Material dirtMaterial;
+	public Material waterMaterial;
+	public Material floraMaterial;
+	public Material crazyMaterial;
+
+	public Renderer planetBase;
+	public Renderer crater;
+	public Renderer terrainA;
+	public Renderer terrainB;
+	public Renderer terrainC;
+	public Renderer terrainD;
+	public Renderer terrainE;
+	public Renderer terrainF;
+	public Renderer terrainG;
+	public Renderer terrainH;
 
 
 	void Awake(){
+
 		lr = GetComponent<LineRenderer> ();
 		messageScript = GameObject.Find("Messages").GetComponent<UITexts>();
+	}
+
+	void Start(){
+		planetBase.material = initialMaterial;
+		crater.material = initialMaterial;
 	}
 
 	public void SetOrbit ()
 	{
 
 
-		a = Random.Range (5 + (orbitalOrder * spacing), 15 + (orbitalOrder * spacing));
-		b = Random.Range (3 + (orbitalOrder * spacing), 25 + (orbitalOrder * spacing));
+		a = Random.Range (2 + (orbitalOrder * spacing), 30 + (orbitalOrder * spacing));
+		b = Random.Range (1 + (orbitalOrder * spacing), 40 + (orbitalOrder * spacing));
 
 //		a = 6;
 //		b = 6;
@@ -122,36 +152,30 @@ using System.Collections.Generic;
 
 		isHabitable = true;
 		for (int i = 0; i < 1000; i += 250) {
-//			Debug.Log ("Index checked: " + i);
 			Collider2D overlapsGoldilocks = Physics2D.OverlapCircle (positions [i], 0.1f, goldilocksLayer);
 			Collider2D overlapsHotZone = Physics2D.OverlapCircle (positions [i], 0.1f, hotZoneLayer);
-
-//			Debug.Log ("overlapsGoldilocks: " + overlapsGoldilocks);
-//			Debug.Log ("overlapsHotZone: " + overlapsHotZone);
 
 			if (overlapsGoldilocks == null || overlapsHotZone != null) {
 				if (initialState) {
 					if (!messageScript.tutorial) {
-						if (messageScript.habitableWorlds > 0) {
-							messageScript.habitableWorlds--;
-						}
-						messageScript.ShowMessageText ("Life withers and dies");
+						messageScript.ShowMessageText ("The trees wither and die");
 					}
 				}
 
 				isHabitable = false;
+				habitableOrbits = 0;
+				DeactivateAllModels ();
 			}
 		}
 
 		if (!initialState && isHabitable) {
 			if (!messageScript.tutorial) {
-				messageScript.habitableWorlds++;
-				messageScript.ShowMessageText ("From dirt grows the flowers");
+				messageScript.ShowMessageText ("From ze dirt grows ze flowers");
 			}
 		}
 
 		if (isHabitable) {
-			gameObject.tag = "Planet";// convert orbiting body to a planet whe it reaches the habitable zone
+			gameObject.tag = "Planet";// convert orbiting body to a planet when it reaches the habitable zone
 			if (isComet) {
 				isComet = false;
 			}
@@ -162,6 +186,9 @@ using System.Collections.Generic;
 				lr.material = unInhabitableMaterial;
 			}
 		}
+
+		// check if planet is habitable and update score
+		messageScript.CheckHabitable();
 
 	}
 
@@ -179,20 +206,65 @@ using System.Collections.Generic;
 			fraction = 0;
 		}
 
-		if (positionIndex == 5 && isHabitable) {
-			habitableOrbits++;// this gets reset in the CheckGoldilocks function if planet moves out fo habitable zone
-			messageScript.totalHabitableOrbits ++;
-			Debug.Log("habitableOrbits:__________" + habitableOrbits);
+		if (positionIndex == 5 && isHabitable && !logged) {
+			logged = true;
+			habitableOrbits++;// this gets reset in the CheckGoldilocks function if planet moves out of habitable zone
+			messageScript.CheckHabitable();
+//			Debug.Log ("habitableOrbits:__________" + habitableOrbits);
+		}
+		if (positionIndex != 5 && logged) {
+			logged = false;
 		}
 
-//		Debug.Log("positionIndex_____________ " + positionIndex);
+	}
 
-//		positions = CreateEllipse(a,b,h,k,theta,resolution);
-//		LineRenderer lr = GetComponent<LineRenderer>();
-//		lr.SetVertexCount (resolution+1);
-//		for (int i = 0; i <= resolution; i++) {
-//			lr.SetPosition(i, positions[i]);
-//		}
+	public void UpdateModel (int milestone)
+	{
+		currentMilestone = milestone;
+//		Debug.Log ("Update Model: " + milestone);
+
+		switch (milestone) {
+			case 1:
+				if (Random.Range (0, 1) > 0.5f) {
+					treesA.SetActive (true);
+				} else {
+					treesB.SetActive(true);
+				}
+				SetMaterials();
+				break;
+			case 5:
+				house.SetActive(true);
+				break;
+			case 15:
+				rocket.SetActive(true);
+				break;
+			case 50:
+				break;
+			default:
+				break;
+		}
+
+	}
+
+	public void DeactivateAllModels ()
+	{
+		treesA.SetActive (false);
+		treesB.SetActive (false);
+		house.SetActive (false);
+		rocket.SetActive (false);
+	}
+
+	void SetMaterials(){
+		planetBase.material = dirtMaterial;
+		crater.material = dirtMaterial;
+		terrainA.material = floraMaterial;
+		terrainB.material = waterMaterial;
+		terrainC.material = waterMaterial;
+		terrainD.material = crazyMaterial;
+		terrainE.material = waterMaterial;
+		terrainF.material = floraMaterial;
+		terrainG.material = crazyMaterial;
+		terrainH.material = waterMaterial;
 	}
 
  }
