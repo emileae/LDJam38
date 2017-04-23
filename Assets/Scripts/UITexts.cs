@@ -6,6 +6,10 @@ using System.Collections.Generic;
 
 public class UITexts : MonoBehaviour {
 
+	public AudioSource sunSound;
+	public AudioSource planetSound;
+	public AudioSource lifeSound;
+
 	public Text score;
 	public Text civScore;
 
@@ -103,7 +107,7 @@ public class UITexts : MonoBehaviour {
 			}
 			if (milestones.Contains (planets [i].habitableOrbits)) {
 				int milestoneIndex = milestones.IndexOf (planets [i].habitableOrbits);
-				Debug.Log ("Milestone: " + milestoneIndex);
+//				Debug.Log ("Milestone: " + milestoneIndex);
 				civillisations [i] = milestoneIndex;
 				planets [i].UpdateModel (milestoneIndex);
 
@@ -142,14 +146,17 @@ public class UITexts : MonoBehaviour {
 					switch (milestones[currentCivilisationState]) {
 						case 1:
 							ShowMessageText ("Trees!");
+							LifeSound();
 							planets [i].UpdateModel(1);
 							break;
 						case 5:
 							ShowMessageText ("A little house.");
+							LifeSound();
 							planets [i].UpdateModel(5);
 							break;
 						case 15:
 							ShowMessageText ("They're boldly going where no one has gone before");
+							LifeSound();
 							planets [i].UpdateModel(15);
 							break;
 						case 25:
@@ -186,4 +193,18 @@ public class UITexts : MonoBehaviour {
 		}
 //		goldilocksIndicator.enabled = true;
 	}
+
+	public void SunSound(){
+		Debug.Log("Soundddddddddaaaaa");
+		sunSound.Play();
+	}
+	public void PlanetSound(){
+		Debug.Log("Soundddddddddbbbbb");
+		planetSound.Play();
+	}
+	public void LifeSound(){
+		Debug.Log("Soundddddddddcccc");
+		lifeSound.Play();
+	}
+
 }

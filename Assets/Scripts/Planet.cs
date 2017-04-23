@@ -31,6 +31,7 @@ public class Planet : MonoBehaviour {
 
 		Collider2D overlapSun = Physics2D.OverlapCircle (transform.position, 0.1f, sunLayer);
 		if (overlapSun != null && !dead) {
+			messageScript.SunSound();
 			DestroyPlanet();
 		}
 	}
@@ -112,6 +113,7 @@ public class Planet : MonoBehaviour {
 				}
 
 				orbitScript.TweakOrbit ();
+				messageScript.PlanetSound();
 
 			}
 
@@ -139,6 +141,7 @@ public class Planet : MonoBehaviour {
 		// the universe starts again
 		if (orbitScript.habitableOrbits >= 25) {
 			GameObject.Find ("BigBang").GetComponent<BigBang> ().Bang ();
+			messageScript.SunSound();
 		}
 
 	}
