@@ -1545,9 +1545,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 873700168}
-  mainCameraAudio: {fileID: 0}
+  mainCameraAudio: {fileID: 873700165}
   zoomedCamera: {fileID: 2109614017}
-  zoomedCameraAudio: {fileID: 0}
+  zoomedCameraAudio: {fileID: 2109614014}
   fieldOfView: 0
   minFieldOfView: 10
   zoomedFieldOfView: 0
